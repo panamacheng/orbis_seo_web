@@ -6,4 +6,8 @@ router.get('/', function(req, res) {
   res.render('pages/home', { title: 'ORBIS - Casa' });
 });
 
+router.get('/estados', function(req, res) {
+  res.render('pages/estados', { title: 'Lista Estados' })
+})
+
 module.exports = router;
