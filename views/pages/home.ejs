@@ -1,0 +1,137 @@
+<body class="style-modifier-4">
+  <noscript>
+    <div>Javascript deve estar ativado para a exibição correta da página</div>
+  </noscript>
+  <a class="jump-to" href="#content">Ir para o conteúdo</a>
+  <a class="jump-to" href="#nav">Ir para a navegação</a>
+  <!-- main container of all the page elements -->
+  <div id="wrapper">
+    <!-- Import the navbar -->
+    <% include ../partials/_navbar.ejs %> 
+
+    <!-- main content of the page -->
+    <main id="content">
+      <section class="intro bg-stretch">
+        <span data-srcset="assets/images/bg-intro--sm.jpg"></span>
+        <span data-srcset="assets/images/bg-intro.jpg" data-media="(min-width: 768px)"></span>
+        <div class="container">
+          <div class="row">
+            <div class="col-10 col-sm-8 col-md-5">
+              <div class="intro__img">
+                <img src="assets/images/img-app-showcase.png" srcset="assets/images/img-app-showcase@2x.png 2x" alt="App showcase" width="419" height="465">
+              </div>
+            </div>
+            <div class="col-12 col-md-7 col-lg-6">
+              <div class="intro__des">
+                <h1>Bem-vindo ao Orbis</h1>
+                <p>Uma rede social de geolocalização criada para mapear os grupos sociais da sua região. Com o Orbis,
+                  você pode verificar onde esses grupos estão em tempo real e conhecê-los.</p>
+                <section class="app-stores">
+                  <h2>Baixe nosso aplicativo</h2>
+                  <ul>
+                    <li><a href="#" target="_blank"><img src="assets/images/ico-app-store.png" srcset="assets/images/ico-app-store@2x.png 2x" alt="Download on the App Store" width="139" height="47"></a></li>
+                    <li><a href="#" target="_blank"><img src="assets/images/ico-google-play.png" srcset="assets/images/ico-google-play@2x.png 2x" alt="GET IN ON Google Play" width="163" height="46"></a></li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="two-columns">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-6 d-none d-md-block">
+              <a href="#" class="media media--style-1">
+                <div class="media__elem bg-stretch">
+                  <span data-srcset="assets/images/img-map.jpg, assets/images/img-map@2x.jpg 2x"></span>
+                </div>
+                <span class="button-container"><span class="button button--secondary"><span class="icon-pin"></span>MAPA
+                    SOCIAL</span></span>
+              </a>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="media">
+                <iframe class="media__elem" src="https://www.youtube.com/embed/sT5tvPb2QhM" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="features container">
+        <h2 class="for-sr">Features</h2>
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="feature">
+              <div class="feature__img">
+                <img src="assets/images/ico-group.png" alt="Group" width="71" height="71">
+              </div>
+              <div class="feature__des">
+                <p>Crie ou participe de um grupo.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="feature">
+              <div class="feature__img">
+                <img src="assets/images/ico-map.png" alt="Map" width="71" height="71">
+              </div>
+              <div class="feature__des">
+                <p>Faça check-in em lugares com seu grupo e marque seu território no mapa com o símbolo do grupo.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="feature">
+              <div class="feature__img">
+                <img src="assets/images/ico-flag.png" alt="Flag" width="71" height="71">
+              </div>
+              <div class="feature__des">
+                <p>Compita pela posse de locais com outros grupos fazendo check-in.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="feature">
+              <div class="feature__img">
+                <img src="assets/images/ico-speaker.png" alt="Speaker" width="71" height="71">
+              </div>
+              <div class="feature__des">
+                <p>Quanto mais check-ins houver em um lugar, maior será o círculo do grupo em torno dele. Então diga aos
+                  seus amigos para fazer check-in</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="feature">
+              <div class="feature__img">
+                <img src="assets/images/ico-photos.png" alt="Photos" width="71" height="71">
+              </div>
+              <div class="feature__des">
+                <p>Envie textos / fotos / vídeos para seus grupos e socialize com outros membros.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="feature">
+              <div class="feature__img">
+                <img src="assets/images/ico-pin.png" alt="Pin" width="71" height="71">
+              </div>
+              <div class="feature__des">
+                <p>Pesquise empresas locais, pontos turísticos, museus, parques, galerias de arte, praias, praças,
+                  espaços culturais e muito mais.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Import the footer -->
+    <% include ../partials/_footer.ejs %> 
+
+    <a class="jump-to b-0" href="#wrapper">Ir para o topo</a>
+
+    <% include ../partials/_scripts.ejs %>
+  </div>
+</body>
