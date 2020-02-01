@@ -1,0 +1,60 @@
+// ---------------------------------------------------------===
+// Street detail page styles
+// ---------------------------------------------------------===
+
+.content__more {
+  padding-top: 3px;
+
+  h2 {
+    font-weight: 700;
+    font-size: 14px;
+    color: $base-text-color;
+    margin-bottom: 5px;
+  }
+}
+
+.content__two-cols {
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 6px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-bottom: 19px;
+  }
+
+  .info-list {
+    margin-bottom: 30px;
+
+    @include media-breakpoint-up(md) {
+      flex: 0 0 240px;
+      max-width: 240px;
+      margin-bottom: 0;
+      padding-right: 20px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 292px;
+      max-width: 292px;
+    }
+  }
+
+  .map {
+    margin-bottom: 13px;
+
+    @include media-breakpoint-up(md) {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0;
+      margin-top: 3px;
+      margin-bottom: 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 7px;
+    }
+  }
+}

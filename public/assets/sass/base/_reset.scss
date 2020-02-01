@@ -1,0 +1,126 @@
+// ---------------------------------------------------------===
+// General resets
+// ---------------------------------------------------------===
+
+html,
+body { height: 100%; }
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+* {max-height: 1000000px;}
+
+body {
+	color: $base-text-color;
+	background: $base-background-color;
+	font: #{$base-font-size}/#{$base-line-height} $base-font-family;
+	min-width: $base-min-width;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// adaptive images
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+// google map fix
+.gm-style img {max-width: none}
+
+// hide tel links on desktop
+@media only screen and (min-width:1025px) {
+	a[href^=tel],a[href^=skype], a[href^=sms] {
+		cursor:default;
+		pointer-events:none;
+	}
+}
+
+@include selection {
+  background-color: $primary-color;
+  color: $white;
+}
+
+// wrapper
+#wrapper {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	min-height: 100%;
+	padding-bottom: 60px;
+
+	@include media-breakpoint-up(xs1) {
+		padding-bottom: 63px;
+	}
+
+	@include media-breakpoint-up(sm) {
+		padding-bottom: 66px;
+	}
+
+	@media print {
+		overflow: visible;
+	}
+}
+
+.for-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.jump-to {
+	position: absolute;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	@include size(1px);
+	padding: 8px 12px;
+	margin: 5px;
+	@include font (12px, $button-line-height, $button-font-weight);
+	color: $button-color;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: left;
+	white-space: nowrap;
+	clip: rect(0, 0, 0, 0);
+	background: $button-background;
+	border: none;
+	border-radius: $button-border-radious;
+	z-index: 9999;
+	@include animate(background-color);
+
+	&:active,
+	&:focus {
+		@include size(auto);
+		overflow: visible;
+		clip: auto;
+		white-space: normal;
+		text-decoration: none;
+		color: $white;
+	}
+
+	&:hover {
+		background-color: $primary-color;
+		color: $white;
+		text-decoration: none;
+	}
+
+	&.b-0 {
+		bottom: 0;
+	}
+}
+
+.d-print-none {
+
+	@media print {
+		display: none !important;
+	}
+}

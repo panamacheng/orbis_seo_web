@@ -1,0 +1,268 @@
+// ---------------------------------------------------------===
+// Forms
+// ---------------------------------------------------------===
+
+form,
+fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+input[type='url'],
+input[type='date'],
+textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: $form-element-border-radius;
+  border-radius: $form-element-border-radius;
+  box-sizing: border-box;
+  border: 1px solid $form-element-border-color;
+  padding: $form-element-padding;
+  background-color: $form-element-background-color;
+  color: $form-element-color;
+  font-size: $form-element-font-size;
+  line-height: $form-element-line-height;
+  font-weight: $form-element-font-weight;
+  @include size(100%, 46px);
+  letter-spacing: .7px;
+  @include animate(border-color);
+
+  &:hover,
+  &:focus {
+    border-color: $form-element-focus-border-color;
+  }
+
+  &:focus {
+  	outline: none;
+  }
+
+  @include placeholder {
+    color: $form-element-placeholder-color;
+  }
+}
+
+select {
+  -webkit-border-radius: $form-element-border-radius;
+}
+
+textarea {
+  resize: vertical;
+  vertical-align: top;
+  height: auto;
+}
+
+button,
+input[type='button'],
+input[type='reset'],
+input[type='file'],
+input[type='submit'] {
+  -webkit-appearance: none;
+  -webkit-border-radius: $form-element-border-radius;
+  cursor: pointer;
+}
+
+.button,
+button:not(.default-style),
+input[type='button']:not(.default-style),
+input[type='reset']:not(.default-style),
+input[type='submit']:not(.default-style) {
+	display: inline-flex;
+  vertical-align: top;
+  align-items: center;
+  justify-content: center;
+  padding: $button-padding;
+  @include font($button-font-size, $button-line-height, $button-font-weight);
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+  background: $button-background;
+  background-size: 200% 100%;
+  color: $button-color;
+  border: none;
+  border-radius: $button-border-radious;
+  height: 46px;
+  letter-spacing: 0.4px;
+  @include animate(background-color, .2s, linear);
+
+  &:hover,
+  &:focus {
+    background-color: $primary-color;
+    color: $white;
+    text-decoration: none;
+  }
+
+  &:focus {
+  	outline: none;
+  }
+
+  &.button--primary {
+    padding: 0.75rem 1.05rem;
+    border-radius: 10px;
+    height: auto;
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: 400;
+    background-color: $black;
+
+    &:hover,
+    &:focus {
+      background-color: $primary-color;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  &.button--secondary {
+    background-color: $black;
+
+    &:hover,
+    &:focus {
+      background-color: $primary-color;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  [class^="icon-"] {
+    margin-right: 10px;
+    font-size: 117%;
+  }
+}
+
+.c-select {
+  display: block;
+  width: 100%;
+  position: relative;
+
+  &:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width: 35px;
+    background:#bbb;
+    pointer-events:none;
+    border-radius:0 6px 6px 0;
+    z-index: 1;
+  }
+
+  &:before {
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width: 40px;
+    background:none;
+    pointer-events:none;
+    border-radius:0 5px 5px 0;
+    z-index: 1;
+  }
+
+  &:after {
+    content:'';
+    @include box-align(vc);
+    right:17px;
+    @include triangle(6px 5px, $black, down);
+    line-height: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    @include media-breakpoint-up(md) {
+      border-width: 9px 5px 0;
+    }
+  }
+
+  select {
+    border:1px solid $form-element-border-color;
+    padding:0.8rem 2.05rem 0.8rem 1.05rem;
+    margin:0;
+    outline:none;
+    background-color: $form-element-background-color;
+    color: $form-element-color;
+    -webkit-appearance:none;
+    appearance:none;
+    border-radius:$form-element-border-radius;
+    width:100%;
+    height: 46px;
+    position: relative;
+    font-size: $form-element-font-size;
+    line-height: $form-element-line-height;
+    font-weight: $form-element-font-weight;
+    @include animate(border-color);
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $form-element-focus-border-color;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.c-checkbox {
+  display: inline-flex !important;
+  vertical-align: top;
+  align-items: flex-start;
+
+  [type="checkbox"] {
+    position:fixed;
+    left:0;
+    top:0;
+    opacity:0;
+    z-index: -1;
+
+    &:checked {
+
+      + .c-checkbox__input:before {
+        opacity: 1;
+      }
+    }
+
+    &:disabled {
+
+      + .c-checkbox__input,
+      ~ .c-checkbox__label {
+        opacity: .5;
+      }
+    }
+  }
+
+  .c-checkbox__input {
+    @include size(16px);
+    min-width: 16px;
+    border:1px solid #c1c1c1;
+    position: relative;
+    border-radius: 50%;
+    margin-top: 3px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      top: 2px;
+      bottom: 2px;
+      background-color: #c1c1c1;
+      border-radius: 50%;
+      opacity: 0;
+      @include animate(opacity);
+    }
+  }
+
+  .c-checkbox__label {
+    padding-left: 5px;
+  }
+}

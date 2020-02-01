@@ -1,0 +1,79 @@
+// ---------------------------------------------------------===
+// Typography
+// ---------------------------------------------------------===
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.h {
+  line-height: $headings-line-height;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  margin: 0 0 0.55em;
+  color: $headings-color;
+}
+
+h1, .h1 {
+  font-size: $h1-font-size;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 36px;
+  }
+}
+
+h2, .h2 {
+  font-size: $h2-font-size;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 32px;
+  }
+}
+
+h3, .h3 {
+  font-size: $h3-font-size;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 29px;
+  }
+}
+
+h4, .h4 {
+  font-size: $h4-font-size;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 24px;
+  }
+}
+
+h5, .h5 {
+  font-size: $h5-font-size;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 19px;
+  }
+}
+
+h6, .h6 {
+  font-size: $h6-font-size;
+  line-height: 1.5;
+}
+
+p {
+  margin: 0 0 1.85em;
+}
+
+a {
+  color: $base-link-color;
+  text-decoration: none;
+  @include animate(color);
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    outline: none;
+    color: darken($base-link-color, 15);
+  }
+}

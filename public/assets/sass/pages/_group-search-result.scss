@@ -1,0 +1,32 @@
+// ---------------------------------------------------------===
+// Group search result page styles
+// ---------------------------------------------------------===
+
+.result-items-container {
+
+  h1 {
+    position: relative;
+    font-size: 18px;
+    font-weight: 700;
+    margin: -25px 0 12px 3px;
+
+    @include media-breakpoint-up(sm) {
+      max-width: calc(100% - 33%);
+    }
+
+    @include media-breakpoint-up(md) {
+      margin: -43px 0 20px 3px;
+      max-width: calc(100% - 348px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      max-width: calc(100% - 380px);
+    }
+
+    @media print {
+      max-width: none;
+      margin: 0 0 20px;
+      font-size: 30px;
+    }
+  }
+}

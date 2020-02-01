@@ -1,0 +1,417 @@
+// ---------------------------------------------------------===
+// Home page styles
+// ---------------------------------------------------------===
+
+.intro {
+  @include padding(36px null 50px);
+  text-align: center;
+  color: $white;
+  font-weight: 400;
+  background-size: cover;
+  background-position: center;
+  background-color: $black;
+
+  @include media-breakpoint-up(md) {
+    text-align: left;
+    padding-bottom: 0;
+    font-weight: 300;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 47px;
+    @include font(18px, 1.666667);
+  }
+
+  @media print {
+    text-align: left;
+    padding: 30px 0 20px;
+  }
+
+  h1 {
+    color: #f5f8fa;
+    margin: 0 -10px 6px;
+
+    @include media-breakpoint-up(sm) {
+      @include margin(null 0);
+      margin-bottom: 16.5px;
+    }
+
+    @include media-breakpoint-up(md) {
+      color: inherit;
+      margin-bottom: 8px;
+    }
+
+    @media print {
+      @include margin(null 0);
+    }
+  }
+
+  .row:first-of-type {
+    justify-content: center;
+
+    @include media-breakpoint-up(md) {
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+
+    @media print {
+      align-items: center;
+    }
+
+    [class^="col-"] {
+
+      &:first-child {
+
+        @media print {
+          flex: 0 0 30%;
+          max-width: 30%;
+          padding-right: 20px;
+        }
+      }
+
+      &:last-child {
+
+        @media print {
+          flex: 0 0 70%;
+          max-width: 70%;
+        }
+      }
+    }
+  }
+}
+
+.intro__img {
+  @include padding(null 4px null 6px);
+  max-width: 280px;
+  @include margin(null auto);
+
+  @include media-breakpoint-up(sm) {
+    max-width: 340px;
+  }
+
+  @include media-breakpoint-up(md) {
+    max-width: none;
+    margin: 0 -32px -27px -2px;
+    @include padding(null 0);
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: -45px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    margin-right: -2px;
+  }
+
+  @media print {
+    margin: 0;
+    max-width: none;
+    padding: 0;
+  }
+
+  img {
+    vertical-align: top;
+
+    @media print {
+      width: 100%;
+    }
+  }
+}
+
+.intro__des {
+  padding-top: 25px;
+
+  @include media-breakpoint-up(sm) {
+    @include padding(null 20px);
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: 0 0 25px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 0 0 45px 17px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    padding-bottom: 85px;
+  }
+
+  @media print {
+    padding: 0;
+  }
+}
+
+.app-stores {
+  padding-top: 2px;
+  padding-left: 10px;
+
+  @include media-breakpoint-up(md) {
+    padding-left: 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 9px;
+  }
+
+  @media print {
+    display: none;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    padding-right: 10px;
+    color: inherit;
+
+    @include media-breakpoint-up(md) {
+      font-size: 14px;
+      padding-right: 0;
+      margin-bottom: 4px;
+    }
+  }
+
+  ul {
+    @extend %listreset;
+    display: flex;
+    @include margin(null -5px);
+    justify-content: center;
+
+    @include media-breakpoint-up(md) {
+      justify-content: flex-start;
+      @include margin(null -6px);
+    }
+
+    li {
+      padding: 5px;
+
+      @include media-breakpoint-up(md) {
+        padding: 4px;
+      }
+
+      &:first-child {
+
+        @include media-breakpoint-up(md) {
+          flex: 0 0 132px;
+          max-width: 132px;
+        }
+      }
+
+      &:nth-child(2) {
+
+        @include media-breakpoint-up(md) {
+          flex: 0 0 151px;
+          max-width: 151px;
+        }
+      }
+    }
+
+    a {
+      display: block;
+      @include animate(opacity, .3s, ease);
+
+      &:hover,
+      &:focus {
+        opacity: .7;
+      }
+    }
+  }
+
+  img {
+    vertical-align: top;
+  }
+}
+
+.features {
+  @include padding(50px null 25px);
+
+  @include media-breakpoint-up(md) {
+    padding: 80px 80px 56px;
+  }
+
+  @media print {
+    padding: 10px 0;
+  }
+
+  .row {
+
+    @include media-breakpoint-up(xl) {
+      @include margin(null -45px);
+    }
+  }
+
+  [class^="col-"] {
+
+    @include media-breakpoint-up(xl) {
+      @include padding(null 45px);
+    }
+
+    @media print {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  @include font(16px, 1.5, 300);
+  padding: 0 10px 20px;
+
+  @include media-breakpoint-up(sm) {
+    padding: 0 55px 33px 30px;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: 0 0 48px;
+    display: block;
+    text-align: center;
+  }
+
+  @media print {
+    display: flex;
+    padding: 0 0 20px;
+    text-align: left;
+  }
+}
+
+.feature__img {
+  flex: 0 0 56px;
+  max-width: 56px;
+
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 86px;
+    max-width: 86px;
+  }
+
+  @include media-breakpoint-up(md) {
+    max-width: none;
+  }
+
+  @media print {
+    flex: 0 0 86px;
+    max-width: 86px;
+  }
+
+  img {
+    vertical-align: top;
+  }
+}
+
+.feature__des {
+  padding-top: 10px;
+  padding-left: 20px;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 5px;
+    padding-left: 0;
+  }
+
+  @media print {
+    padding: 0;
+    flex: 0 0 calc(100% - 86px);
+    max-width: calc(100% - 86px);
+  }
+
+  >* {
+    margin-bottom: 0;
+  }
+}
+
+.two-columns {
+  background-color: $white;
+
+  @media print {
+    display: none;
+  }
+
+  .container {
+    @include padding(46px null 22px);
+
+    @include media-breakpoint-up(md) {
+      @include padding(81px null 40px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include padding(111px null 60px);
+    }
+  }
+
+  .row {
+    
+    @include media-breakpoint-up(md) {
+      @include margin(null -12px);
+    }
+  }
+
+  [class^="col-"] {
+
+    @include media-breakpoint-up(md) {
+      @include padding(null 12px);
+    }
+  }
+}
+
+.media {
+  position: relative;
+  display: block;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 25px;
+
+  &.media--style-1 {
+
+    &:hover,
+    &:focus {
+
+      .button {
+        background-color: darken($primary-color, 10);
+
+        &.button--secondary {
+          background-color: $primary-color;
+        }
+      }
+    }
+
+    .media__elem {
+      border: 3px solid #e7e7e7;
+      border-radius: 4px;
+      background-color: transparent;
+
+      &.bg-stretch {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    .button-container {
+      @include box-align(vc);
+      left: 10px;
+      right: 10px;
+      text-align: center;
+    }
+  
+    .button {
+      padding: .9rem 1.5rem;
+      height: auto;
+
+      @include media-breakpoint-up(lg) {
+        padding: 1.2rem 2.3rem;
+        margin: 7px 0 0 -5px;
+      }
+    }
+  }
+}
+
+.media__elem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include size(100%);
+  border: 0;
+  background-color: #161817;
+}

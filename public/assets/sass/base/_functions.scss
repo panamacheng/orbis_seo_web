@@ -1,0 +1,185 @@
+// ---------------------------------------------------------===
+// Functions
+// ---------------------------------------------------------===
+
+/// colors black & white
+/// @example scss - Usage
+///   .my-class {
+///     background: black(0.15);
+///     color: white(0.9);
+///   }
+@function black($opacity){
+    @return rgba(black, $opacity);
+}
+
+@function white($opacity){
+    @return rgba(white, $opacity);
+}
+
+/* 
+  ************************************
+  ************************************
+  ************* grid & breakpoints *************
+  ************************************
+  ************************************
+*/
+// Ascending
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null or unit($num) == "%" {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+
+// Starts at zero
+// Used to ensure the min-width of the lowest breakpoint starts at 0.
+@mixin _assert-starts-at-zero($map, $map-name: "$grid-breakpoints") {
+  $values: map-values($map);
+  $first-value: nth($values, 1);
+  @if $first-value != 0 {
+    @warn "First breakpoint in #{$map-name} must start at 0, but starts at #{$first-value}.";
+  }
+}
+
+
+// Breakpoint viewport sizes and media queries.
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.02px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - .02, null);
+}
+
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+/* 
+  ************************************
+  ************************************
+  ************* grid & breakpoints end *************
+  ************************************
+  ************************************
+*/
+
+
+/* 
+  ************************************
+  ************************************
+  ************* rem-calc start *************
+  ************************************
+  ************************************
+*/
+/* 
+Removes the unit (e.g. px, em, rem) from a value, returning the number only.
+@param {Number} $num - Number to strip unit from.
+@returns {Number} The same number, sans unit.
+*/
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+/* 
+Converts one or more pixel values into matching rem values.
+@param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+   
+@param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
+   
+@returns {List} A list of converted values.
+*/
+@function rem-calc($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+
+  /* If no base is defined, defer to the global font size */
+  @if $base == null {
+    $base: $base-font-size;
+  }
+
+  /* If the base font size is a %, then multiply it by 16px 
+     This is because 100% font size = 16px in most all browsers
+  */
+  @if unit($base) == '%' {
+    $base: ($base / 100%) * 16px;
+  }
+
+  /* Using rem as base allows correct scaling */
+  @if unit($base) == 'rem' {
+    $base: strip-unit($base) * 16px;
+  }
+
+  @if $count == 1 {
+    @return -to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, -to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+/* 
+Converts a pixel value to matching rem value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the `$base-font-size` variable.
+
+@access private
+@param {Number} $value - Pixel value to convert.
+@param {Number} $base [null] - Base for pixel conversion.
+
+@returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
+*/
+@function -to-rem($value, $base: null) {
+  /* Check if the value is a number */
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    @return $value;
+  }
+
+  /* Transform em into rem if someone hands over 'em's */
+  @if unit($value) == 'em' {
+    $value: strip-unit($value) * 1rem;
+  }
+
+  /* Calculate rem if units for $value is not rem or em */
+  @if unit($value) != 'rem' {
+    $value: strip-unit($value) / strip-unit($base) * 1rem;
+  }
+
+  /* Turn 0rem into 0 */
+  @if $value == 0rem {
+    $value: 0;
+  }
+
+  @return $value;
+}
+/* 
+  ************************************
+  ************************************
+  ************* rem-calc end *************
+  ************************************
+  ************************************
+*/

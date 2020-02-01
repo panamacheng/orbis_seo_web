@@ -1,0 +1,104 @@
+// ---------------------------------------------------------===
+// Variables
+// ---------------------------------------------------------===
+
+// Colors
+$blue: #3ba9d2;
+$gray: #666;
+$dark-gray: #535353;
+$whitesmoke: #f4f6f8;
+$black: #000;
+$white: #fff;
+
+$primary-color: $blue;
+
+$base-font-sans-serif: 'Roboto', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+// Body
+$base-text-color: $gray !default;
+$base-background-color: $whitesmoke !default;
+$base-font-size: 14px !default;
+$base-line-height: 1.71 !default;
+$base-font-family: $base-font-sans-serif !default;
+
+$vertical-rhythm: ($base-line-height * 1rem);
+
+$base-min-width: 320px;
+
+// Liks
+$base-link-color: $primary-color;
+
+// Buttons 
+$button-color: $white !default;
+$button-background: $dark-gray !default;
+$button-padding: 0.8rem 1.05rem !default;
+$button-font-size: $base-font-size + 1px !default;
+$button-line-height: 1.4 !default;
+$button-font-weight: 900 !default;
+$button-border-radious: 5px !default;
+
+// Forms
+$form-element-padding: 0.8rem 1.05rem !default;
+$form-element-background-color: transparent !default;
+$form-element-border-color: #dfe5e9 !default;
+$form-element-focus-border-color: $primary-color !default;
+$form-element-color: $black !default;
+$form-element-placeholder-color: $base-text-color !default;
+$form-element-border-radius: 5px !default;
+$form-element-font-size: $base-font-size;
+$form-element-line-height: 1.4;
+$form-element-font-weight: 400;
+
+// Headers
+$h1-font-size: 30px !default;
+$h2-font-size: 27px !default;
+$h3-font-size: 24px !default;
+$h4-font-size: 21px !default;
+$h5-font-size: 17px !default;
+$h6-font-size: 15px !default;
+
+$headings-line-height: 1.3 !default;
+$headings-font-family: inherit !default;
+$headings-color: $black !default;
+$headings-font-weight: 900 !default;
+
+$animation-speed: 0.3s !default;
+
+//Custom variables
+$font-path: "../../fonts";
+$icomoon-font-path: "#{$font-path}/icomoon";
+$image-path: "../../images";
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints: (
+  xs:    0,
+  xs1:  375px,
+  sm:    500px,
+  sm1:  600px,
+  md:    768px,
+  lg:    992px,
+  xl:    1200px
+) !default;
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+  md: 720px,
+  lg: 960px,
+  xl: 1134px
+) !default;
+
+// @include _assert-ascending($container-max-widths, "$container-max-widths");
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+$grid-columns:                12 !default;
+$grid-gutter-width:           56px !default;

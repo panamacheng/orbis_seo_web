@@ -1,0 +1,100 @@
+// ---------------------------------------------------------===
+// Print reset
+// ---------------------------------------------------------===
+
+@media print {
+
+  * {
+    text-shadow: none !important;
+    color: $black !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    min-width: 0 !important;
+    height: auto !important;
+    page-break-inside: always;
+    overflow: hidden !important;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: "";
+  }
+
+  abbr[title]:after {
+    content: " ("attr(title) ")";
+  }
+
+  // Don't show links for images, or javascript/internal links
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  select {
+    background: $white !important;
+  }
+
+  .tel[href^="tel"]:after {
+    content: "";
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+    max-width: none;
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+
+    [class^="col-"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .example {
+    display: none;
+  }
+}

@@ -1,0 +1,33 @@
+// ---------------------------------------------------------===
+// City page styles
+// ---------------------------------------------------------===
+
+.browse-item {
+  padding-bottom: 25px;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: 31px;
+  }
+
+  @media print {
+    display: none;
+  }
+
+  input[type='text'],
+  input[type='tel'],
+  input[type='email'],
+  input[type='search'],
+  input[type='password'],
+  input[type='url'],
+  input[type='date'],
+  textarea {
+    height: 52px;
+    @include padding(0.8rem null);
+    border-radius: 10px;
+    letter-spacing: 0;
+
+    &:not(:hover):not(:focus) {
+      border-color: #e2e6e6;
+    }
+  }
+}

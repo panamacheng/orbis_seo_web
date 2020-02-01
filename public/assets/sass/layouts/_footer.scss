@@ -1,0 +1,115 @@
+// ---------------------------------------------------------===
+// Footer styles
+// ---------------------------------------------------------===
+
+#footer {
+  background-color: $black;
+  color: $white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  @media print {
+    display: none;
+  }
+
+  .container {
+    @include padding(15px null 18px);
+  }
+
+  a {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $primary-color;
+    }
+  }
+}
+
+.footer__link {
+  display: inline-flex;
+  vertical-align: top;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  margin: 5px 0 0 3px;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    .txt {
+      text-decoration: underline;
+    }
+  }
+
+  [class^="icon-"] {
+    font-size: 104%;
+    margin-top: -3px;
+    margin-right: 9px;
+  }
+}
+
+.footer__option {
+  @extend %listreset;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  @include margin(null -20px);
+  font-size: 10px;
+
+  @include media-breakpoint-up(xs1)  {
+    font-size: 12px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    @include margin(null -13px);
+    font-size: $base-font-size;
+  }
+
+  @include media-breakpoint-up(lg) {
+    justify-content: flex-end;
+    @include margin(null -15px);
+  }
+
+  li {
+    padding: 5px 8px;
+
+    @include media-breakpoint-up(xs1)  {
+      @include padding(null 10px);
+    }
+    
+    @include media-breakpoint-up(sm) {
+      @include padding(null 13px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include padding(null 15px);
+    }
+
+    + li {
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: 12px;
+        @include size(4px);
+        border-radius: 50%;
+        background-color: #4d4d4d;
+
+        @include media-breakpoint-up(xs1)  {
+          left: -3px;
+          top: 14px;
+          @include size(5px);
+        }
+      }
+    }
+  }
+}
